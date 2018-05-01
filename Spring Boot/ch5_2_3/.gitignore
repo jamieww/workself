@@ -8,5 +8,4 @@
 out
 gen
 .idea/
-target/generated-sources/
-target/generated-test-sources/
+/target/
