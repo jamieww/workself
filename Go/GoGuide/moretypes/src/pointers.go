@@ -2,6 +2,11 @@ package main
 
 import "fmt"
 
+type Vertex struct {
+	X int
+	Y int
+}
+
 func main() {
 	i, j := 42, 2701
 
@@ -14,4 +19,11 @@ func main() {
 	*p = *p / 37   // divide j through the pointer
 	fmt.Println(j) // see the new value of j
 
+	v := Vertex{1, 2}
+	v.X = 4
+	fmt.Println(v.X)
+
+	q := &v
+	q.X = 1e9
+	fmt.Println(v)
 }
