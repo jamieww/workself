@@ -8,7 +8,7 @@ type Vertex struct {
 }
 
 func main() {
-	i, j := 42, 2701
+	/*i, j := 42, 2701
 
 	p := &i         // point to i
 	fmt.Println(*p) // read i through the pointer
@@ -25,5 +25,19 @@ func main() {
 
 	q := &v
 	q.X = 1e9
-	fmt.Println(v)
+	fmt.Println(v)*/
+
+	a := make([]int, 5)
+	printSlice("a", a)
+	b := make([]int, 0, 5)
+	printSlice("b", b)
+	c := b[:2]
+	printSlice("c", c)
+	d := b[4:5]
+	printSlice("d", d)
+}
+
+func printSlice(s string, x []int) {
+	fmt.Printf("%s len=%d cap=%d %v\n",
+		s, len(x), cap(x), x)
 }
