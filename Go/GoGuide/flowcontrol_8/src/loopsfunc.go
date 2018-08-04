@@ -23,11 +23,11 @@ func Sqrt(x float64) float64 {
 func main() {
 	//fmt.Println(Sqrt(4))
 
-	fmt.Println("counting")
+	/*fmt.Println("counting")
 
 	for i := 0; i < 10; i++ {
 		defer fmt.Println(i)
 	}
 
-	fmt.Println("done")
+	fmt.Println("done")*/
 }
