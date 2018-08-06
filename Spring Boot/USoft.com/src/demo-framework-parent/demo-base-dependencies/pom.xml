@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>demo-framework-parent</artifactId>
+        <groupId>com.demo.framework</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>demo-base-dependencies</artifactId>
+    <version>${profile}-1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <slf4j-api.version>1.7.25</slf4j-api.version>
+        <logback-classic.version>1.2.3</logback-classic.version>
+        <junit-jupiter-api.version>5.2.0</junit-jupiter-api.version>
+        <commons-lang3.version>3.7</commons-lang3.version>
+        <commons-collections4.version>4.2</commons-collections4.version>
+        <spring-boot-starter-data-redis.version>2.0.3.RELEASE</spring-boot-starter-data-redis.version>
+        <fastjson.version>1.2.47</fastjson.version>
+        <demo-exception-utils.version>${profile}-1.0-SNAPSHOT</demo-exception-utils.version>
+        <demo-protobuf-utils.version>${profile}-1.0-SNAPSHOT</demo-protobuf-utils.version>
+        <grpc-all.version>1.11.0</grpc-all.version>
+        <httpclient.version>4.5.6</httpclient.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback-classic.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit-jupiter-api.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot-starter-data-redis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.demo.framework</groupId>
+                <artifactId>demo-exception-utils</artifactId>
+                <version>${demo-exception-utils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.demo.framework</groupId>
+                <artifactId>demo-protobuf-utils</artifactId>
+                <version>${demo-protobuf-utils.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-all</artifactId>
+                <version>${grpc-all.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

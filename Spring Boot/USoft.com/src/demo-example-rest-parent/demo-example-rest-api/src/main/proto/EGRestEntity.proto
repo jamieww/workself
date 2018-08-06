@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package example;
+option java_multiple_files = true;
+option java_package = "com.demo.example.rest.api.entity";
+
+// 枚举类型 定义时注意顺序值要与常量值一致，方便转换！
+// 客户端类型
+enum ClientType {
+    CT_NON = 0; // 未定义
+    CT_IOS = 1; // iOS客户端
+    CT_ANDROID = 2; // Android客户端
+    CT_WEB = 3; // PC端
+    CT_MWEB = 4; // 移动H5端
+    CT_ADMIN = 5; // 管理后台
+}
+
+// 每次响应的头信息
+message RespHeader {
+    int32 code = 1; // 状态码 0.正常 非0.异常
+    string msg = 2; // 错误信息 code!=0时,有值
+}
+
+// 分页信息
+message PagingInfo {
+    int32 totalPage = 1; // 总页数
+    int32 totalCount = 2; // 总条数
+    int32 pageSize = 3; // 每页条数
+    int32 pageNumber = 4; // 当前页码
+}
+
+// 用户信息
+message UserInfo {
+    int32 id = 1; // 主键'
+    string code = 2; //  用户编码
+    string name = 3; //  用户姓名
+    int32 age = 4; // 年龄
+    double amount = 5; //  金额
+    int32 gender = 6; //  性别：0.未知 1.男 2.女
+    string birthday = 7; //生日
+}

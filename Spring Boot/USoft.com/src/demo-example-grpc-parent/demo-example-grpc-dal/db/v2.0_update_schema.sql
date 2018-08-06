@@ -1,0 +1,4 @@
+-- #v2.0_update_schema
+-- alter table `manqian_ncrm`.t_customer_consult add column channel_id varchar(50) DEFAULT '' COMMENT '渠道id';
+-- alter table `manqian_ncrm`.t_customer_consult add column source_url varchar(200) DEFAULT '' COMMENT '来源url';
+-- alter table `manqian_ncrm`.t_cfp add column leave_status TINYINT(1) NOT NULL DEFAULT 0 COMMENT '是否离职，0：在职，1：离职';

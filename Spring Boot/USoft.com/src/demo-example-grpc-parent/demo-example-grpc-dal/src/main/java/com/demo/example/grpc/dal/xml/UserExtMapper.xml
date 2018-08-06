@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.example.grpc.dal.mapper.UserMapper">
+
+    <resultMap id="UserVOResultMap" type="com.demo.example.grpc.dal.vo.UserVO" extends="BaseResultMap">
+        <result column="code_name" property="codeName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="findByUserCode" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where code = #{userCode}
+    </select>
+    <select id="findVOByUserCode" resultMap="UserVOResultMap">
+        select
+        <include refid="Table_Base_Column_List"/>,CONCAT(code,name) as code_name
+        from t_user
+        where code = #{userCode}
+    </select>
+</mapper>

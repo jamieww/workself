@@ -1,0 +1,34 @@
+syntax = "proto3";
+import "EGRestEntity.proto";
+package example;
+option java_multiple_files = true;
+option java_package = "com.demo.example.rest.api.protobuf";
+
+//用户服务
+service IEGUserService {
+    // 获取用户信息-restAPI /api/user/get, method:get, type:kv
+    rpc getUserInfo (GetUserInfoReq) returns (GetUserInfoResp) {
+    }
+    //新增用户信息-restAPI /api/user/insert, method:post, type:json
+    rpc insertUserInfo (InsertUserInfoReq) returns (InsertUserInfoResp) {
+    }
+}
+
+// 获取用户信息 请求参数
+message GetUserInfoReq {
+    string userCode = 1; //用户编号
+}
+// 获取用户信息 响应参数
+message GetUserInfoResp {
+    RespHeader RespHeader = 1;
+    UserInfo userInfo = 2; // 用户信息
+}
+//新增用户信息 请求参数
+message InsertUserInfoReq {
+    UserInfo userInfo = 1; // 用户信息
+    repeated UserInfo ui = 2;//用户列表
+}
+//新增用户信息 响应参数
+message InsertUserInfoResp {
+    RespHeader RespHeader = 1;
+}

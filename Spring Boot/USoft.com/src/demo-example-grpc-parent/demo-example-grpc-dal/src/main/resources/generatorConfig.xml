@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- 配置mysql 驱动jar包路径.用了相对路径 -->
+    <classPathEntry location="./mybatis_generate/mysql-connector-java-6.0.6.jar"/>
+
+    <context id="demo_mysql_tables" targetRuntime="com.demo.mybatis.utils.MyIntrospectedTableMyBatis3Impl">
+
+        <commentGenerator type="com.demo.mybatis.utils.MybatisCommentGenerator">
+            <!-- 定义是否生成原生注释，我们这里自定义了，所以选择false -->
+            <property name="suppressAllComments" value="false"/>
+            <!-- This property is used to specify whether MBG will include the generation timestamp in the generated comments -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.253.12:3306/demo_example?useUnicode=true&amp;useSSL=false&amp;characterEncoding=UTF-8&amp;nullCatalogMeansCurrent=true&amp;useInformationSchema=true"
+                        userId="root"
+                        password="select111***">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 数据表对应的model层  -->
+        <javaModelGenerator targetPackage="com.demo.example.grpc.dal.entity" targetProject="mybatis_generate">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- sql mapper 映射配置文件 -->
+        <sqlMapGenerator targetPackage="com.demo.example.grpc.dal.xml" targetProject="mybatis_generate">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- mybatis3中的mapper接口 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.demo.example.grpc.dal.mapper"
+                             targetProject="mybatis_generate">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="t_user" domainObjectName="User"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <ignoreColumn column="create_time"/>
+            <ignoreColumn column="update_time"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

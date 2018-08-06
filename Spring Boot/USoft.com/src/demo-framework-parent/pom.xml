@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.demo.framework</groupId>
+    <artifactId>demo-framework-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <description>demo底层框架</description>
+    <modules>
+        <module>demo-grpc-dependencies</module>
+        <module>demo-base-dependencies</module>
+        <module>demo-mybatis-utils</module>
+        <module>demo-exception-utils</module>
+        <module>demo-rest-dependencies</module>
+        <module>demo-protobuf-utils</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <distributionManagement>
+        <!-- 发布release仓库 -->
+        <repository>
+            <id>platform-release</id>
+            <name>platform-release</name>
+            <url>http://113.105.74.141:8081/artifactory/libs-release-local</url>
+        </repository>
+        <!-- 发布快照版本 -->
+        <snapshotRepository>
+            <id>platform-snapshots</id>
+            <name>platform-snapshots</name>
+            <url>http://113.105.74.141:8081/artifactory/libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <profiles>
+        <profile>
+            <!-- 开发环境 -->
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile>dev</profile>
+            </properties>
+        </profile>
+        <profile>
+            <!-- 测试环境 -->
+            <id>test</id>
+            <properties>
+                <profile>test</profile>
+            </properties>
+        </profile>
+        <profile>
+            <!-- 生产环境 -->
+            <id>prod</id>
+            <properties>
+                <profile>prod</profile>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>

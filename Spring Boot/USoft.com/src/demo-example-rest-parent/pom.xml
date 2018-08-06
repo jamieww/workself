@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.demo.example</groupId>
+    <artifactId>demo-example-rest-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>demo-example-rest-api</module>
+        <module>demo-example-rest-service</module>
+        <module>demo-example-rest-utils</module>
+        <module>demo-example-rest-domain</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <protoc-gen-grpc-java.version>1.11.0</protoc-gen-grpc-java.version>
+    </properties>
+
+
+    <distributionManagement>
+        <!-- 发布release仓库 -->
+        <repository>
+            <id>platform-release</id>
+            <name>platform-release</name>
+            <url>http://113.105.74.141:8081/artifactory/libs-release-local</url>
+        </repository>
+        <!-- 发布快照版本 -->
+        <snapshotRepository>
+            <id>platform-snapshots</id>
+            <name>platform-snapshots</name>
+            <url>http://113.105.74.141:8081/artifactory/libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.demo.framework</groupId>
+                <artifactId>demo-rest-dependencies</artifactId>
+                <version>dev-1.0-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <profiles>
+        <profile>
+            <!-- 开发环境 -->
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.active.profile>dev</spring.active.profile>
+            </properties>
+        </profile>
+        <profile>
+            <!-- 测试环境 -->
+            <id>test</id>
+            <properties>
+                <spring.active.profile>test</spring.active.profile>
+            </properties>
+        </profile>
+        <profile>
+            <!-- 生产环境 -->
+            <id>prod</id>
+            <properties>
+                <spring.active.profile>prod</spring.active.profile>
+            </properties>
+        </profile>
+    </profiles>
+</project>

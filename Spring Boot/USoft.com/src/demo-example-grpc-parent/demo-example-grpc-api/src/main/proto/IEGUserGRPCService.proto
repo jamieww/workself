@@ -1,0 +1,35 @@
+syntax = "proto3";
+import "EGGRPCEntity.proto";
+package example;
+option java_multiple_files = true;
+option java_package = "com.demo.example.grpc.api.protobuf";
+option java_outer_classname = "IEGUserServiceProto";
+
+//用户服务
+service IEGUserService {
+    // 获取用户信息
+    rpc getUserInfo (GetUserInfoRequest) returns (GetUserInfoResponse) {
+    }
+    //新增用户信息
+    rpc insertUserInfo (InsertUserInfoRequest) returns (InsertUserInfoResponse) {
+    }
+}
+
+// 获取用户信息 请求参数
+message GetUserInfoRequest {
+    string userCode = 1; //用户编号
+}
+// 获取用户信息 响应参数
+message GetUserInfoResponse {
+    ResponseHeader responseHeader = 1;
+    UserInfo userInfo = 2; // 用户信息
+}
+//新增用户信息 请求参数
+message InsertUserInfoRequest {
+    UserInfo userInfo = 1; // 用户信息
+    repeated UserInfo ui = 2;//用户列表
+}
+//新增用户信息 响应参数
+message InsertUserInfoResponse {
+    ResponseHeader responseHeader = 1;
+}
