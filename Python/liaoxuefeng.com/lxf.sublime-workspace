@@ -73,14 +73,13 @@
 			}
 		},
 		{
-			"contents": "select count(purchaseno0.pn_id) as col_0_0 from purc$notice purchaseno0_ cross join purc$orderitems purchaseor1_ cross join purc$orders purchaseor2_ cross join sec$enterprises enterprise3_ where purchaseno0.pn_pdid=purchaseor1.pd_id and purchaseor1.pd_puid=purchaseor2.pu_id and purchaseor2.pu_enuu=enterprise3.en_uu and (enterprise3.en_name like 'S' or purchaseor1.pr_code like 'S' or purchaseor1.pr_title like 'S' or purchaseor1.pr_spec like 'S' or purchaseor2.pu_code like 'S') and purchaseno0.pn_venduu=N and purchaseno0.pn_date<='S' and purchaseno0.pn_date>='S'",
+			"contents": "select partnershi0.id as id1_8, partnershi0.app_uid as app_uid2_8, partnershi0.cust_space_name as cust_spa3_8, partnershi0.cust_space_uu as cust_spa4_8, partnershi0.cust_business_code as cust_bus5_8, partnershi0.cust_user_uu as cust_use6_8, partnershi0.cust_user_email as cust_use7_8, partnershi0.cust_user_name as cust_use8_8, partnershi0.cust_user_tel as cust_use9_8, partnershi0.method as method10_8, partnershi0.operate_date as operate11_8, partnershi0.reason as reason12_8, partnershi0.request_date as request13_8, partnershi0.status as status14_8, partnershi0.status_code as status_15_8, partnershi0.vend_space_name as vend_sp16_8, partnershi0.vend_space_uu as vend_sp17_8, partnershi0.vend_business_code as vend_bu18_8, partnershi0.vend_user_uu as vend_us19_8, partnershi0.vend_user_email as vend_us20_8, partnershi0.vend_user_name as vend_us21_8, partnershi0.vend_user_tel as vend_us22_8 from sso$partnership$record partnershi0_ left outer join sso$userspace userspace1_ on partnershi0.vend_space_uu=userspace1.spaceuu left outer join sso$userspace userspace2_ on partnershi0.cust_space_uu=userspace2.spaceuu inner join sso$userspace userspace3_ on partnershi0.cust_space_uu=userspace3.spaceuu inner join sso$userspace userspace4_ on partnershi0.cust_space_uu=userspace4.spaceuu inner join sso$userspace userspace5_ on partnershi0.cust_space_uu=userspace5.spaceuu inner join sso$userspace userspace6_ on partnershi0.cust_space_uu=userspace6.spaceuu inner join sso$userspace userspace7_ on partnershi0.cust_space_uu=userspace7.spaceuu inner join sso$userspace userspace8_ on partnershi0.cust_space_uu=userspace8.spaceuu inner join sso$userspace userspace9_ on partnershi0.cust_space_uu=userspace9.spaceuu inner join sso$userspace userspace10_ on partnershi0.cust_space_uu=userspace10.spaceuu inner join sso$userspace userspace11_ on partnershi0.cust_space_uu=userspace11.spaceuu inner join sso$userspace userspace12_ on partnershi0.vend_space_uu=userspace12.spaceuu inner join sso$userspace userspace13_ on partnershi0.vend_space_uu=userspace13.spaceuu inner join sso$userspace userspace14_ on partnershi0.vend_space_uu=userspace14.spaceuu inner join sso$userspace userspace15_ on partnershi0.vend_space_uu=userspace15.spaceuu inner join sso$userspace userspace16_ on partnershi0.vend_space_uu=userspace16.spaceuu inner join sso$userspace userspace17_ on partnershi0.vend_space_uu=userspace17.spaceuu inner join sso$userspace userspace18_ on partnershi0.vend_space_uu=userspace18.spaceuu inner join sso$userspace userspace19_ on partnershi0.vend_space_uu=userspace19.spaceuu inner join sso$userspace userspace20_ on partnershi0.vend_space_uu=userspace20.spaceuu cross join sso$user user21_ cross join sso$user user22_ cross join sso$user user23_ cross join sso$user user24_ cross join sso$user user25_ cross join sso$user user26_ where userspace9.adminuu=user21.useruu and userspace10.adminuu=user22.useruu and userspace11.adminuu=user23.useruu and userspace18.adminuu=user24.useruu and userspace19.adminuu=user25.useruu and userspace20.adminuu=user26.useruu and ((userspace1.business_code='S' or partnershi0.vend_business_code='S') and (userspace3.space_name like 'S' or userspace4.business_code like 'S' or userspace5.profession like 'S' or userspace6.tags like 'S' or cast(userspace7.spaceuu as char) like 'S' or userspace8.reg_address like 'S' or user21.vip_name like 'S' or user22.mobile like 'S' or user23.user_email like 'S') or (userspace2.business_code='S' or partnershi0.cust_business_code='S') and (userspace12.space_name like 'S' or userspace13.business_code like 'S' or userspace14.profession like 'S' or userspace15.tags like 'S' or cast(userspace16.spaceuu as char) like 'S' or userspace17.reg_address like 'S' or user24.vip_name like 'S' or user25.mobile like 'S' or user26.user_email like 'S')) order by partnershi0.status desc, cast(partnershi0.operate_date as signed) desc limit N\n\nselect t.*, (select pr_code from v$products where pr_b2bdisabled = N and pr_enuu = N and pr_cmpcode = t.cmpCode limit N) as ifMatched  from (select pr_id id, pr_code code, pr_title title, pr_spec spec, pr_cmpcode cmpCode, pr_unit unit, pr_kind kind,pr_minpack minPack,  pr_minOrder minOrder, pr_brand brand, pr_standard standard, pr_issale isSale, pr_ispurchase isPurchase from v$products p1 where p1.pr_enuu = N and p1.pr_b2bdisabled = N and N=N order by pr_issale desc, pr_standard desc, pr_id desc ) t limit N,N\n\nbart.set_age(25)bart.set_age(25)print_score(bart)\nbart.set_age = MethodType(set_age, bart)",
 			"file": "/D/Temp/2018-08/商城/慢日志/slow.sql",
-			"file_size": 3794,
-			"file_write_time": 131787933436702488,
+			"file_size": 3906,
+			"file_write_time": 131788029943561292,
 			"settings":
 			{
-				"buffer_size": 566,
-				"encoding": "UTF-8",
+				"buffer_size": 4514,
 				"line_ending": "Windows",
 				"name": "select user0.user_uu as user_uu1_77_0, user0.user_"
 			}
@@ -1485,15 +1484,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 566,
+						"buffer_size": 4514,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								566,
-								566
+								4514,
+								4514
 							]
 						],
 						"settings":
@@ -1518,6 +1517,41 @@
 							},
 							"bracket_highlighter.clone_regions":
 							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
@@ -1528,51 +1562,16 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
+								"bh_regex_content"
 							],
 							"bracket_highlighter.locations":
 							{
@@ -1580,24 +1579,24 @@
 								{
 									"1":
 									[
-										565,
-										566
+										4513,
+										4514
 									]
 								},
 								"icon":
 								{
 									"1":
 									[
-										"Packages/BracketHighlighter/icons/single_quote.png",
-										"region.greenish"
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"region.yellowish"
 									]
 								},
 								"open":
 								{
 									"1":
 									[
-										563,
-										564
+										4499,
+										4500
 									]
 								},
 								"unmatched":
@@ -1606,6 +1605,41 @@
 							},
 							"bracket_highlighter.regions":
 							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
@@ -1616,58 +1650,23 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
+								"bh_regex_content"
 							],
-							"is_init_dirty_state": false,
+							"is_init_dirty_state": true,
 							"syntax": "Packages/SQL/SQL.sublime-syntax",
 							"word_wrap": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 96.8,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

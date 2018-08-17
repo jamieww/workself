@@ -11,9 +11,13 @@ class Student(object):
         print('%s: %s' % (self.name, self.score))
 
     def get_grade(self):
-        if self.score >= 90:
+        if self.score > 100:
+            raise ValueError('invalid value: %s' % self.score)
+        elif self.score >= 80:
             return 'A'
         elif self.score >= 60:
             return 'B'
-        else:
+        elif self.score >= 0:
             return 'C'
+        else:
+            raise ValueError('invalid value: %s' % self.score)
