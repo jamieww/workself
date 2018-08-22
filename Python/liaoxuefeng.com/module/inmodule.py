@@ -22,5 +22,5 @@ if __name__ == '__main__':
     print("PI(%s) is %s" % (10, PI(10)))
     print("PI(%s) is %s" % (100, PI(100)))
     print("PI(%s) is %s" % (1000, PI(1000)))
-    #  print("PI(%s) is %s" % (10000, PI(10000)))
+    print("PI(%s) is %s" % (10000, PI(10000)))
     #  print("PI(%s) is %s" % (10000000, PI(10000000)))
