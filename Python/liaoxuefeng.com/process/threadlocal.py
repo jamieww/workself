@@ -16,6 +16,7 @@ def process_thread(name):
     process_student()
 
 
+#  执行
 t1 = threading.Thread(target=process_thread, args=('Alice',), name='Thread-A')
 t2 = threading.Thread(target=process_thread, args=('Bob',), name='Thread-B')
 t1.start()
