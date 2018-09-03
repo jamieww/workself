@@ -1,4 +1,3 @@
-# 导入socket库:
 import time
 import socket
 import threading
