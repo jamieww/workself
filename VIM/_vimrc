@@ -1,0 +1,371 @@
+" Startup {{{
+set nocompatible              " be iMproved, required
+filetype off                  " required
+" vim 文件折叠方式为 marker
+augroup ft_vim
+    au!
+
+    au FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+" Plugin {{{
+" set the runtime path to include Vundle and initialize
+set rtp+=$HOME/.vim/bundle/Vundle.vim/
+call vundle#begin('$HOME/.vim/bundle/')
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'scrooloose/nerdtree'                " file/directory treee
+Plugin 'scrooloose/nerdcommenter'           " code commenter
+Plugin 'ctrlpvim/ctrlp.vim'                 " Fuzzy file, buffer, mru, tag, etc finder
+" Plugin 'altercation/vim-colors-solarized'   " solarized themePlugin 'jnurmine/Zenburn'
+" Plugin 'icymind/NeoSolarized'
+" Plugin 'ErichDonGubler/vim-sublime-monokai'
+" Plugin 'chriskempson/base16-vim'
+
+" Plugin 'KabbAmine/yowish.vim'
+" Plugin 'tomasr/molokai'
+" Plugin 'morhetz/gruvbox'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'yegappan/mru'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'w0rp/ale'
+Plugin 'ervandew/supertab'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'Yggdroot/indentLine'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'fatih/vim-go'
+Plugin 'tell-k/vim-autopep8'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"}}}
+
+"  Basic Settings{{{
+"
+set nu
+syntax enable
+syntax on
+let mapleader=','
+let g:mapleader=','
+
+set autochdir
+set cursorline
+set ruler
+set showmatch
+set nobackup
+set noswapfile
+set history=1024
+set hlsearch
+set incsearch
+set mouse=a
+set backspace=indent,eol,start whichwrap+=<,>,[,]
+"}}}
+
+" Vim UI{{{
+" Vim 的默认寄存器和系统剪贴板共享
+set clipboard+=unnamed
+" 设置 alt 键不映射到菜单栏
+set winaltkeys=no
+" 分割出来的窗口位于当前窗口下边/右边
+set splitbelow
+set splitright
+"不显示工具/菜单栏
+set guioptions-=T
+set guioptions-=m
+set guioptions-=L
+set guioptions-=r
+set guioptions-=b
+" 使用内置 tab 样式而不是 gui
+set guioptions-=e
+set nolist
+" set listchars=tab:▶\ ,eol:¬,trail:·,extends:>,precedes:<
+" set guifont=Consolas:h12:cANSI
+" set guifont=新宋体:h12
+set guifont=Inconsolata\ for\ Powerline:h12
+
+" theme 
+set background=dark             " dark | light
+" colorscheme NeoSolarized
+" colorscheme sublimemonokai
+" colorscheme base16-default-dark "set termguicolors
+
+" colorscheme yowish 
+" colorscheme gruvbox 
+" colorscheme molokai 
+colorscheme jellybeans 
+" colorscheme solarized           " use solarized theme
+" let g:solarized_termcolors=256  " if you are use terminal
+"
+set termguicolors
+" if has('gui_running')
+    " set termguicolors
+" else
+    " set t_Co=256
+" endif
+" }}}
+
+" Encoding, Autoindent{{{
+set autoindent
+set smartindent
+set ts=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+" set foldmethod=indent
+" set pastetoggle=<F4>
+
+set encoding=utf-8
+set fileencodings=utf-8,gbk2312,gbk,gb18030,cp936
+" set fileencodings=utf-8
+set fileencoding=utf-8
+set fileformats=unix,dos
+" language messages zh_CN.utf-8
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+"}}}
+
+" Keymap {{{
+nmap <leader>s :source $HOME/_vimrc<cr>
+nmap <leader>e :e $HOME/_vimrc<cr>
+
+map <leader>tn :tabnew<cr>
+map <leader>tc :tabclose<cr>
+map <leader>th :tabp<cr>
+map <leader>tl :tabn<cr>
+map <Leader>tt :NERDTreeToggle<CR>
+
+nmap <Leader>h :MRU<CR> 
+nnoremap <silent> <Leader>f :NERDTreeFind<CR>
+" nnoremap <Leader>gc :Gcommit -a -v<CR> 
+nnoremap <Leader>gc :Gcommit -a<CR> 
+nnoremap <Leader>gw :Gwrite<CR> 
+nnoremap <Leader>gpl :Gpull<CR> 
+nnoremap <Leader>gp :Gpush<CR> 
+nnoremap <Leader>ga :!git add .<CR> 
+
+" w0rp/ale
+"普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+nmap ak <Plug>(ale_previous_wrap)
+nmap aj <Plug>(ale_next_wrap)
+"<Leader>s触发/关闭语法检查
+nmap <Leader>a :ALEToggle<CR>
+"<Leader>d查看错误或警告的详细信息
+nmap <Leader>ad :ALEDetail<CR>
+
+" nerd commenter
+let g:NERDSpaceDelims=1
+map cc          <plug>NERDCommenterComment<CR>
+map cu          <plug>NERDCommenterUncomment<CR>
+map cs          <plug>NERDCommenterSexy<CR>
+map ci          <plug>NERDCommenterInvert<CR>
+map cy          <plug>NERDCommenterYank<CR>
+map ce          <plug>NERDCommenterToEOL<CR>
+map c<space>    <plug>NERDCommenterToggle<CR>
+
+" map tt          <plug>NERDTreeTabsToggle<CR>
+" map ff          <plug>NERDTreeTabsFind<CR>
+"}}}
+
+" let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'unicode'
+set laststatus=2
+
+" let g:nerdtree_tabs_autofind = 1
+" let g:nerdtree_tabs_focus_on_files = 1
+" let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_open_on_gui_startup = 0
+let g:nerdtree_tabs_autoclose = 1
+let NERDTreeShowLineNumbers=1
+let NERDTreeShowHidden = 1
+
+let NERDTreeIgnore = ['\.png$','\.jpg$','\.gif$','\.mp3$','\.flac$', '\.ogg$', '\.mp4$','\.avi$','.webm$','.mkv$','\.pdf$', '\.zip$', '\.tar.gz$', '\.rar$']
+
+let g:jedi#completions_command = "<leader>c"
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:autopep8_on_save = 1
+let g:autopep8_diff_type='vertical'
+let g:autopep8_disable_show_diff=1
+autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
+
+" w0rp/ale
+"始终开启标志列
+let g:ale_sign_column_always = 1
+let g:ale_set_highlights = 1
+let g:ale_set_quickfix = 1
+"文件内容发生变化时不进行检查
+let g:ale_lint_on_text_changed = 'never'
+"打开文件时不进行检查
+let g:ale_lint_on_enter = 0
+"自定义error和warning图标
+let g:ale_sign_error = '✗'
+" let g:ale_sign_warning = '⚡'
+let g:ale_sign_warning = '•'
+"在vim自带的状态栏中整合ale
+" let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+"显示Linter名称,出错或警告等相关信息
+let g:ale_echo_msg_error_str = 'Error'
+let g:ale_echo_msg_warning_str = 'Warning'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" let g:ale_completion_enabled = 1
+" let g:ale_fix_on_save = 1
+let g:ale_javascript_eslint_use_global = 1
+" let g:ale_java_javac_options = '-encoding UTF-8  -J-Duser.language=en'
+" highlight ALEWarningSign guifg=green ctermfg=green guibg=red ctermbg=red
+highlight ALEWarningSign guifg=green guibg=#333333 
+highlight ALEErrorSign guifg=red 
+hi ALEWarning cterm=undercurl gui=undercurl
+hi ALEError cterm=undercurl gui=undercurl
+" highlight clear ALEErrorSign
+" highlight clear ALEWarningSign
+
+" neocomplete Configuration{{{
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=python3complete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+"}}}
+
+" Window{{{
+if has('win32')
+    au GUIEnter * simalt ~x
+else
+    au GUIEnter * call MaximizeWindow()
+endif
+ 
+function! MaximizeWindow()
+    silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
+endfunction 
+
+if has('gui_running')
+else
+    winpos -7 0
+    set lines=49 columns=200
+endif
+"}}}
+
+" Compile & Run{{{
+" map <F5> :call CompileRunGcc()<CR>
+map cr :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+    exec "w"
+    if &filetype == 'c'
+        exec "!g++ % -o %<"
+        exec "!time ./%<"
+    elseif &filetype == 'cpp'
+        exec "!g++ % -o %<"
+        exec "!time ./%<"
+    elseif &filetype == 'java'
+        exec "!javac %"
+        exec "!java %<"
+    elseif &filetype == 'sh'
+        :!time bash %
+    elseif &filetype == 'python'
+        exec "!python %"
+    elseif &filetype == 'html'
+        exec "!firefox % &"
+    elseif &filetype == 'go'
+        exec "!go run %"
+    endif
+endfunc
+"}}}
